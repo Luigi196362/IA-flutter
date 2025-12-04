@@ -1,0 +1,12 @@
+{
+  "loginTitle": "Welcome Back",
+  "loginSubtitle": "Please sign in to continue",
+  "usernameLabel": "Username",
+  "usernameHint": "Please enter your username",
+  "passwordLabel": "Password",
+  "passwordHint": "Please enter your password",
+  "loginButton": "LOGIN",
+  "loginSuccess": "Login Successful!",
+  "loginFailed": "Login Failed: {statusCode}",
+  "errorOccurred": "Error: {error}"
+}

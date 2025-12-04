@@ -1,0 +1,12 @@
+{
+  "loginTitle": "Bienvenido de nuevo",
+  "loginSubtitle": "Por favor inicia sesión para continuar",
+  "usernameLabel": "Usuario",
+  "usernameHint": "Por favor ingresa tu usuario",
+  "passwordLabel": "Contraseña",
+  "passwordHint": "Por favor ingresa tu contraseña",
+  "loginButton": "INICIAR SESIÓN",
+  "loginSuccess": "¡Inicio de sesión exitoso!",
+  "loginFailed": "Fallo el inicio de sesión: {statusCode}",
+  "errorOccurred": "Error: {error}"
+}
