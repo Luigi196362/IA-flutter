@@ -199,6 +199,42 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Fallo el registro: {statusCode}'**
   String registerFailed(Object statusCode);
+
+  /// No description provided for @homeTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Inicio'**
+  String get homeTitle;
+
+  /// No description provided for @settingsTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Configuración'**
+  String get settingsTitle;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Perfil'**
+  String get profileTitle;
+
+  /// No description provided for @languageLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Idioma'**
+  String get languageLabel;
+
+  /// No description provided for @logoutLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Cerrar Sesión'**
+  String get logoutLabel;
+
+  /// No description provided for @welcomeUser.
+  ///
+  /// In es, this message translates to:
+  /// **'Bienvenido, {username}'**
+  String welcomeUser(Object username);
 }
 
 class _AppLocalizationsDelegate

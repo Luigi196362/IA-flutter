@@ -15,5 +15,11 @@
   "registerLink": "¿No tienes cuenta? Regístrate",
   "haveAccountLink": "¿Ya tienes cuenta? Inicia sesión",
   "registerSuccess": "¡Registro exitoso!",
-  "registerFailed": "Fallo el registro: {statusCode}"
+  "registerFailed": "Fallo el registro: {statusCode}",
+  "homeTitle": "Inicio",
+  "settingsTitle": "Configuración",
+  "profileTitle": "Perfil",
+  "languageLabel": "Idioma",
+  "logoutLabel": "Cerrar Sesión",
+  "welcomeUser": "Bienvenido, {username}"
 }

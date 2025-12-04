@@ -15,5 +15,11 @@
   "registerLink": "Don't have an account? Sign up",
   "haveAccountLink": "Already have an account? Login",
   "registerSuccess": "Registration Successful!",
-  "registerFailed": "Registration Failed: {statusCode}"
+  "registerFailed": "Registration Failed: {statusCode}",
+  "homeTitle": "Home",
+  "settingsTitle": "Settings",
+  "profileTitle": "Profile",
+  "languageLabel": "Language",
+  "logoutLabel": "Logout",
+  "welcomeUser": "Welcome, {username}"
 }

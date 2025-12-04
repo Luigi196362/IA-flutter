@@ -64,4 +64,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String registerFailed(Object statusCode) {
     return 'Registration Failed: $statusCode';
   }
+
+  @override
+  String get homeTitle => 'Home';
+
+  @override
+  String get settingsTitle => 'Settings';
+
+  @override
+  String get profileTitle => 'Profile';
+
+  @override
+  String get languageLabel => 'Language';
+
+  @override
+  String get logoutLabel => 'Logout';
+
+  @override
+  String welcomeUser(Object username) {
+    return 'Welcome, $username';
+  }
 }

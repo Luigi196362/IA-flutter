@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import '../l10n/app_localizations.dart';
 import '../main.dart';
 import 'register_screen.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -64,13 +65,14 @@ class _LoginScreenState extends State<LoginScreen>
 
       if (response.statusCode == 200) {
         // Success
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(AppLocalizations.of(context)!.loginSuccess),
-            backgroundColor: Colors.green,
+        if (!mounted) return;
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                HomeScreen(username: _usernameController.text),
           ),
         );
-        // Navigate to next screen if needed
       } else {
         // Failure
         ScaffoldMessenger.of(context).showSnackBar(
