@@ -7,7 +7,9 @@ import 'package:http/http.dart' as http;
 import '../l10n/app_localizations.dart';
 
 class AddView extends StatefulWidget {
-  const AddView({super.key});
+  final VoidCallback? onUploadSuccess;
+
+  const AddView({super.key, this.onUploadSuccess});
 
   @override
   State<AddView> createState() => _AddViewState();
@@ -172,6 +174,7 @@ class _AddViewState extends State<AddView> {
             ),
           );
           _resetSelection();
+          widget.onUploadSuccess?.call();
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(

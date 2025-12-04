@@ -21,7 +21,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final List<Widget> _widgetOptions = <Widget>[
       const GalleryView(),
-      const AddView(),
+      AddView(
+        onUploadSuccess: () {
+          setState(() {
+            _selectedIndex = 0;
+          });
+        },
+      ),
     ];
 
     return Scaffold(

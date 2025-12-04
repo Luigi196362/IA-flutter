@@ -1,5 +1,34 @@
+import 'dart:convert';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import '../l10n/app_localizations.dart';
+
+class ImageItem {
+  final int id;
+  final String name;
+  final String classification;
+  final String contentType;
+  final Uint8List data;
+
+  ImageItem({
+    required this.id,
+    required this.name,
+    required this.classification,
+    required this.contentType,
+    required this.data,
+  });
+
+  factory ImageItem.fromJson(Map<String, dynamic> json) {
+    return ImageItem(
+      id: json['id'],
+      name: json['name'],
+      classification: json['classification'],
+      contentType: json['contentType'],
+      data: base64Decode(json['data']),
+    );
+  }
+}
 
 class GalleryView extends StatefulWidget {
   const GalleryView({super.key});
@@ -12,6 +41,9 @@ class _GalleryViewState extends State<GalleryView> {
   int _crossAxisCount = 2;
   String _searchQuery = '';
   String _selectedCategory = 'All';
+  List<ImageItem> _images = [];
+  bool _isLoading = true;
+  String? _errorMessage;
 
   final List<String> _categories = [
     'All',
@@ -21,6 +53,43 @@ class _GalleryViewState extends State<GalleryView> {
     'Plants',
     'Clothes',
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchImages();
+  }
+
+  Future<void> _fetchImages() async {
+    setState(() {
+      _isLoading = true;
+      _errorMessage = null;
+    });
+
+    try {
+      final response = await http.get(
+        Uri.parse('http://localhost:8080/api/images'),
+      );
+
+      if (response.statusCode == 200) {
+        final List<dynamic> jsonList = jsonDecode(response.body);
+        setState(() {
+          _images = jsonList.map((json) => ImageItem.fromJson(json)).toList();
+          _isLoading = false;
+        });
+      } else {
+        setState(() {
+          _errorMessage = 'Failed to load images: ${response.statusCode}';
+          _isLoading = false;
+        });
+      }
+    } catch (e) {
+      setState(() {
+        _errorMessage = 'Error loading images: $e';
+        _isLoading = false;
+      });
+    }
+  }
 
   void _toggleGridSize() {
     setState(() {
@@ -123,31 +192,103 @@ class _GalleryViewState extends State<GalleryView> {
           ),
         ),
         Expanded(
-          child: GridView.builder(
-            padding: const EdgeInsets.all(16.0),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: _crossAxisCount,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
-              childAspectRatio: 1.0,
-            ),
-            itemCount: 12, // Example count
-            itemBuilder: (context, index) {
-              return Card(
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
+          child: _isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : _errorMessage != null
+              ? Center(
+                  child: Text(
+                    _errorMessage!,
+                    style: const TextStyle(color: Colors.red),
+                  ),
+                )
+              : RefreshIndicator(
+                  onRefresh: _fetchImages,
+                  child: GridView.builder(
+                    padding: const EdgeInsets.all(16.0),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: _crossAxisCount,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                      childAspectRatio: 0.8, // Adjusted for card content
+                    ),
+                    itemCount: _getFilteredImages().length,
+                    itemBuilder: (context, index) {
+                      final image = _getFilteredImages()[index];
+                      return Card(
+                        elevation: 4,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Expanded(
+                              child: Image.memory(
+                                image.data,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Container(
+                                    color: Colors.grey[300],
+                                    child: const Icon(
+                                      Icons.broken_image,
+                                      color: Colors.grey,
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(8.0),
+                              color: Colors.white,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    image.classification,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14,
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  Text(
+                                    image.name,
+                                    style: TextStyle(
+                                      color: Colors.grey[600],
+                                      fontSize: 12,
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
                 ),
-                clipBehavior: Clip.antiAlias,
-                child: Container(
-                  color: Colors.grey[300],
-                  child: Icon(Icons.image, size: 50, color: Colors.grey[600]),
-                ),
-              );
-            },
-          ),
         ),
       ],
     );
+  }
+
+  List<ImageItem> _getFilteredImages() {
+    return _images.where((image) {
+      final matchesSearch =
+          image.name.toLowerCase().contains(_searchQuery.toLowerCase()) ||
+          image.classification.toLowerCase().contains(
+            _searchQuery.toLowerCase(),
+          );
+
+      final matchesCategory =
+          _selectedCategory == 'All' ||
+          image.classification.toLowerCase() == _selectedCategory.toLowerCase();
+
+      return matchesSearch && matchesCategory;
+    }).toList();
   }
 }

@@ -148,4 +148,8 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get uploadingLabel => 'Subiendo...';
+
+  @override
+  String get imageTooLarge =>
+      'La imagen es demasiado grande. El máximo es 10MB.';
 }

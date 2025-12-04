@@ -41,5 +41,6 @@
   "retakeLabel": "Retake",
   "uploadSuccess": "Image uploaded successfully!",
   "uploadFailed": "Upload failed: {error}",
-  "uploadingLabel": "Uploading..."
+  "uploadingLabel": "Uploading...",
+  "imageTooLarge": "Image is too large. Maximum is 10MB."
 }

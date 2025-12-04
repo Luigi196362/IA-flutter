@@ -355,6 +355,12 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Subiendo...'**
   String get uploadingLabel;
+
+  /// No description provided for @imageTooLarge.
+  ///
+  /// In es, this message translates to:
+  /// **'La imagen es demasiado grande. El máximo es 10MB.'**
+  String get imageTooLarge;
 }
 
 class _AppLocalizationsDelegate

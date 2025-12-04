@@ -41,5 +41,6 @@
   "retakeLabel": "Volver a tomar",
   "uploadSuccess": "¡Imagen subida con éxito!",
   "uploadFailed": "Fallo la subida: {error}",
-  "uploadingLabel": "Subiendo..."
+  "uploadingLabel": "Subiendo...",
+  "imageTooLarge": "La imagen es demasiado grande. El máximo es 10MB."
 }
