@@ -3,7 +3,7 @@ import '../l10n/app_localizations.dart';
 import 'settings_screen.dart';
 import 'login_screen.dart';
 import '../widgets/gallery_view.dart';
-import '../widgets/scan_view.dart';
+import '../widgets/add_view.dart';
 
 class HomeScreen extends StatefulWidget {
   final String username;
@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final List<Widget> _widgetOptions = <Widget>[
       const GalleryView(),
-      const ScanView(),
+      const AddView(),
     ];
 
     return Scaffold(
@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: IndexedStack(index: _selectedIndex, children: _widgetOptions),
+      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -87,8 +87,8 @@ class _HomeScreenState extends State<HomeScreen> {
             label: AppLocalizations.of(context)!.galleryLabel,
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.camera_alt),
-            label: AppLocalizations.of(context)!.scanLabel,
+            icon: const Icon(Icons.add_circle_outline),
+            label: AppLocalizations.of(context)!.addLabel,
           ),
         ],
         currentIndex: _selectedIndex,

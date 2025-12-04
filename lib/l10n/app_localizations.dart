@@ -242,11 +242,29 @@ abstract class AppLocalizations {
   /// **'Galería'**
   String get galleryLabel;
 
-  /// No description provided for @scanLabel.
+  /// No description provided for @addLabel.
   ///
   /// In es, this message translates to:
-  /// **'Escanear'**
-  String get scanLabel;
+  /// **'Agregar'**
+  String get addLabel;
+
+  /// No description provided for @fileLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Archivo'**
+  String get fileLabel;
+
+  /// No description provided for @cameraLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Cámara'**
+  String get cameraLabel;
+
+  /// No description provided for @pickImageLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Seleccionar Imagen'**
+  String get pickImageLabel;
 
   /// No description provided for @switchCamera.
   ///
@@ -307,6 +325,18 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Ropa'**
   String get categoryClothes;
+
+  /// No description provided for @sendLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Enviar'**
+  String get sendLabel;
+
+  /// No description provided for @retakeLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Volver a tomar'**
+  String get retakeLabel;
 }
 
 class _AppLocalizationsDelegate

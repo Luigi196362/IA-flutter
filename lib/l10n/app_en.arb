@@ -23,7 +23,10 @@
   "logoutLabel": "Logout",
   "welcomeUser": "Welcome, {username}",
   "galleryLabel": "Gallery",
-  "scanLabel": "Scan",
+  "addLabel": "Add",
+  "fileLabel": "File",
+  "cameraLabel": "Camera",
+  "pickImageLabel": "Pick Image",
   "switchCamera": "Switch Camera",
   "cameraError": "Camera Error: {error}",
   "searchHint": "Search...",
@@ -33,5 +36,7 @@
   "categoryCars": "Cars",
   "categoryFood": "Food",
   "categoryPlants": "Plants",
-  "categoryClothes": "Clothes"
+  "categoryClothes": "Clothes",
+  "sendLabel": "Send",
+  "retakeLabel": "Retake"
 }

@@ -89,7 +89,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get galleryLabel => 'Gallery';
 
   @override
-  String get scanLabel => 'Scan';
+  String get addLabel => 'Add';
+
+  @override
+  String get fileLabel => 'File';
+
+  @override
+  String get cameraLabel => 'Camera';
+
+  @override
+  String get pickImageLabel => 'Pick Image';
 
   @override
   String get switchCamera => 'Switch Camera';
@@ -122,4 +131,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get categoryClothes => 'Clothes';
+
+  @override
+  String get sendLabel => 'Send';
+
+  @override
+  String get retakeLabel => 'Retake';
 }

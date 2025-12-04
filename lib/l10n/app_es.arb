@@ -23,7 +23,10 @@
   "logoutLabel": "Cerrar Sesión",
   "welcomeUser": "Bienvenido, {username}",
   "galleryLabel": "Galería",
-  "scanLabel": "Escanear",
+  "addLabel": "Agregar",
+  "fileLabel": "Archivo",
+  "cameraLabel": "Cámara",
+  "pickImageLabel": "Seleccionar Imagen",
   "switchCamera": "Cambiar Cámara",
   "cameraError": "Error de cámara: {error}",
   "searchHint": "Buscar...",
@@ -33,5 +36,7 @@
   "categoryCars": "Autos",
   "categoryFood": "Comida",
   "categoryPlants": "Plantas",
-  "categoryClothes": "Ropa"
+  "categoryClothes": "Ropa",
+  "sendLabel": "Enviar",
+  "retakeLabel": "Volver a tomar"
 }
