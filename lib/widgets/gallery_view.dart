@@ -276,6 +276,23 @@ class _GalleryViewState extends State<GalleryView> {
     );
   }
 
+  String _mapCategoryToApiValue(String category) {
+    switch (category) {
+      case 'Animals':
+        return 'Animales';
+      case 'Cars':
+        return 'Autos';
+      case 'Food':
+        return 'Comida';
+      case 'Plants':
+        return 'Plantas';
+      case 'Clothes':
+        return 'Ropa';
+      default:
+        return category;
+    }
+  }
+
   List<ImageItem> _getFilteredImages() {
     return _images.where((image) {
       final matchesSearch =
@@ -284,9 +301,10 @@ class _GalleryViewState extends State<GalleryView> {
             _searchQuery.toLowerCase(),
           );
 
+      final apiCategory = _mapCategoryToApiValue(_selectedCategory);
       final matchesCategory =
           _selectedCategory == 'All' ||
-          image.classification.toLowerCase() == _selectedCategory.toLowerCase();
+          image.classification.toLowerCase() == apiCategory.toLowerCase();
 
       return matchesSearch && matchesCategory;
     }).toList();
