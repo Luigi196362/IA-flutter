@@ -235,6 +235,78 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Bienvenido, {username}'**
   String welcomeUser(Object username);
+
+  /// No description provided for @galleryLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Galería'**
+  String get galleryLabel;
+
+  /// No description provided for @scanLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Escanear'**
+  String get scanLabel;
+
+  /// No description provided for @switchCamera.
+  ///
+  /// In es, this message translates to:
+  /// **'Cambiar Cámara'**
+  String get switchCamera;
+
+  /// No description provided for @cameraError.
+  ///
+  /// In es, this message translates to:
+  /// **'Error de cámara: {error}'**
+  String cameraError(Object error);
+
+  /// No description provided for @searchHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Buscar...'**
+  String get searchHint;
+
+  /// No description provided for @filterLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Filtrar'**
+  String get filterLabel;
+
+  /// No description provided for @categoryAll.
+  ///
+  /// In es, this message translates to:
+  /// **'Todas'**
+  String get categoryAll;
+
+  /// No description provided for @categoryAnimals.
+  ///
+  /// In es, this message translates to:
+  /// **'Animales'**
+  String get categoryAnimals;
+
+  /// No description provided for @categoryCars.
+  ///
+  /// In es, this message translates to:
+  /// **'Autos'**
+  String get categoryCars;
+
+  /// No description provided for @categoryFood.
+  ///
+  /// In es, this message translates to:
+  /// **'Comida'**
+  String get categoryFood;
+
+  /// No description provided for @categoryPlants.
+  ///
+  /// In es, this message translates to:
+  /// **'Plantas'**
+  String get categoryPlants;
+
+  /// No description provided for @categoryClothes.
+  ///
+  /// In es, this message translates to:
+  /// **'Ropa'**
+  String get categoryClothes;
 }
 
 class _AppLocalizationsDelegate

@@ -21,5 +21,17 @@
   "profileTitle": "Profile",
   "languageLabel": "Language",
   "logoutLabel": "Logout",
-  "welcomeUser": "Welcome, {username}"
+  "welcomeUser": "Welcome, {username}",
+  "galleryLabel": "Gallery",
+  "scanLabel": "Scan",
+  "switchCamera": "Switch Camera",
+  "cameraError": "Camera Error: {error}",
+  "searchHint": "Search...",
+  "filterLabel": "Filter",
+  "categoryAll": "All",
+  "categoryAnimals": "Animals",
+  "categoryCars": "Cars",
+  "categoryFood": "Food",
+  "categoryPlants": "Plants",
+  "categoryClothes": "Clothes"
 }

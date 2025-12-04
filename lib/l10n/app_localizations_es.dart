@@ -84,4 +84,42 @@ class AppLocalizationsEs extends AppLocalizations {
   String welcomeUser(Object username) {
     return 'Bienvenido, $username';
   }
+
+  @override
+  String get galleryLabel => 'Galería';
+
+  @override
+  String get scanLabel => 'Escanear';
+
+  @override
+  String get switchCamera => 'Cambiar Cámara';
+
+  @override
+  String cameraError(Object error) {
+    return 'Error de cámara: $error';
+  }
+
+  @override
+  String get searchHint => 'Buscar...';
+
+  @override
+  String get filterLabel => 'Filtrar';
+
+  @override
+  String get categoryAll => 'Todas';
+
+  @override
+  String get categoryAnimals => 'Animales';
+
+  @override
+  String get categoryCars => 'Autos';
+
+  @override
+  String get categoryFood => 'Comida';
+
+  @override
+  String get categoryPlants => 'Plantas';
+
+  @override
+  String get categoryClothes => 'Ropa';
 }
