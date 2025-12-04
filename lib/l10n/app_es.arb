@@ -38,5 +38,8 @@
   "categoryPlants": "Plantas",
   "categoryClothes": "Ropa",
   "sendLabel": "Enviar",
-  "retakeLabel": "Volver a tomar"
+  "retakeLabel": "Volver a tomar",
+  "uploadSuccess": "¡Imagen subida con éxito!",
+  "uploadFailed": "Fallo la subida: {error}",
+  "uploadingLabel": "Subiendo..."
 }

@@ -3,6 +3,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
 import '../l10n/app_localizations.dart';
 
 class AddView extends StatefulWidget {
@@ -130,6 +131,74 @@ class _AddViewState extends State<AddView> {
     }
   }
 
+  Future<void> _uploadImage() async {
+    if (_selectedImage == null) return;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(AppLocalizations.of(context)!.uploadingLabel)),
+    );
+
+    try {
+      final uri = Uri.parse('http://localhost:8080/api/images');
+      final request = http.MultipartRequest('POST', uri);
+
+      // Read file bytes to support both Web and Mobile
+      final bytes = await _selectedImage!.readAsBytes();
+
+      String filename = _selectedImage!.name;
+      // Ensure filename has an extension for camera uploads if missing
+      if (!filename.toLowerCase().endsWith('.jpg') &&
+          !filename.toLowerCase().endsWith('.jpeg') &&
+          !filename.toLowerCase().endsWith('.png')) {
+        filename = '$filename.jpg';
+      }
+
+      final multipartFile = http.MultipartFile.fromBytes(
+        'image',
+        bytes,
+        filename: filename,
+      );
+
+      request.files.add(multipartFile);
+
+      final response = await request.send();
+
+      if (mounted) {
+        if (response.statusCode == 200 || response.statusCode == 201) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(AppLocalizations.of(context)!.uploadSuccess),
+              backgroundColor: Colors.green,
+            ),
+          );
+          _resetSelection();
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                AppLocalizations.of(
+                  context,
+                )!.uploadFailed(response.statusCode.toString()),
+              ),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              AppLocalizations.of(context)!.uploadFailed(e.toString()),
+            ),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
   void _resetSelection() {
     setState(() {
       _selectedImage = null;
@@ -215,12 +284,7 @@ class _AddViewState extends State<AddView> {
             ),
             const SizedBox(width: 20),
             ElevatedButton.icon(
-              onPressed: () {
-                // TODO: Implement send logic
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Sending image...')),
-                );
-              },
+              onPressed: _uploadImage,
               icon: const Icon(Icons.send),
               label: Text(AppLocalizations.of(context)!.sendLabel),
               style: ElevatedButton.styleFrom(

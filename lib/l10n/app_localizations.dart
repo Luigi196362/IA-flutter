@@ -337,6 +337,24 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Volver a tomar'**
   String get retakeLabel;
+
+  /// No description provided for @uploadSuccess.
+  ///
+  /// In es, this message translates to:
+  /// **'¡Imagen subida con éxito!'**
+  String get uploadSuccess;
+
+  /// No description provided for @uploadFailed.
+  ///
+  /// In es, this message translates to:
+  /// **'Fallo la subida: {error}'**
+  String uploadFailed(Object error);
+
+  /// No description provided for @uploadingLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Subiendo...'**
+  String get uploadingLabel;
 }
 
 class _AppLocalizationsDelegate

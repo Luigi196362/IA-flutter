@@ -137,4 +137,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get retakeLabel => 'Volver a tomar';
+
+  @override
+  String get uploadSuccess => '¡Imagen subida con éxito!';
+
+  @override
+  String uploadFailed(Object error) {
+    return 'Fallo la subida: $error';
+  }
+
+  @override
+  String get uploadingLabel => 'Subiendo...';
 }
