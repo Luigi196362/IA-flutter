@@ -8,5 +8,12 @@
   "loginButton": "LOGIN",
   "loginSuccess": "Login Successful!",
   "loginFailed": "Login Failed: {statusCode}",
-  "errorOccurred": "Error: {error}"
+  "errorOccurred": "Error: {error}",
+  "registerTitle": "Create Account",
+  "registerSubtitle": "Sign up to get started",
+  "registerButton": "REGISTER",
+  "registerLink": "Don't have an account? Sign up",
+  "haveAccountLink": "Already have an account? Login",
+  "registerSuccess": "Registration Successful!",
+  "registerFailed": "Registration Failed: {statusCode}"
 }

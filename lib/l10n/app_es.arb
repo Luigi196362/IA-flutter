@@ -8,5 +8,12 @@
   "loginButton": "INICIAR SESIÓN",
   "loginSuccess": "¡Inicio de sesión exitoso!",
   "loginFailed": "Fallo el inicio de sesión: {statusCode}",
-  "errorOccurred": "Error: {error}"
+  "errorOccurred": "Error: {error}",
+  "registerTitle": "Crear Cuenta",
+  "registerSubtitle": "Regístrate para comenzar",
+  "registerButton": "REGISTRARSE",
+  "registerLink": "¿No tienes cuenta? Regístrate",
+  "haveAccountLink": "¿Ya tienes cuenta? Inicia sesión",
+  "registerSuccess": "¡Registro exitoso!",
+  "registerFailed": "Fallo el registro: {statusCode}"
 }

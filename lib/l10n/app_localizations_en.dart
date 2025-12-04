@@ -41,4 +41,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String errorOccurred(Object error) {
     return 'Error: $error';
   }
+
+  @override
+  String get registerTitle => 'Create Account';
+
+  @override
+  String get registerSubtitle => 'Sign up to get started';
+
+  @override
+  String get registerButton => 'REGISTER';
+
+  @override
+  String get registerLink => 'Don\'t have an account? Sign up';
+
+  @override
+  String get haveAccountLink => 'Already have an account? Login';
+
+  @override
+  String get registerSuccess => 'Registration Successful!';
+
+  @override
+  String registerFailed(Object statusCode) {
+    return 'Registration Failed: $statusCode';
+  }
 }

@@ -157,6 +157,48 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Error: {error}'**
   String errorOccurred(Object error);
+
+  /// No description provided for @registerTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Crear Cuenta'**
+  String get registerTitle;
+
+  /// No description provided for @registerSubtitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Regístrate para comenzar'**
+  String get registerSubtitle;
+
+  /// No description provided for @registerButton.
+  ///
+  /// In es, this message translates to:
+  /// **'REGISTRARSE'**
+  String get registerButton;
+
+  /// No description provided for @registerLink.
+  ///
+  /// In es, this message translates to:
+  /// **'¿No tienes cuenta? Regístrate'**
+  String get registerLink;
+
+  /// No description provided for @haveAccountLink.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Ya tienes cuenta? Inicia sesión'**
+  String get haveAccountLink;
+
+  /// No description provided for @registerSuccess.
+  ///
+  /// In es, this message translates to:
+  /// **'¡Registro exitoso!'**
+  String get registerSuccess;
+
+  /// No description provided for @registerFailed.
+  ///
+  /// In es, this message translates to:
+  /// **'Fallo el registro: {statusCode}'**
+  String registerFailed(Object statusCode);
 }
 
 class _AppLocalizationsDelegate
