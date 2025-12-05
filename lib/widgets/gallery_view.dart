@@ -253,16 +253,8 @@ class _GalleryViewState extends State<GalleryView> {
                                     image.classification,
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 14,
-                                    ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  Text(
-                                    image.name,
-                                    style: TextStyle(
-                                      color: Colors.grey[600],
-                                      fontSize: 12,
+                                      fontSize: 16,
+                                      color: Color(0xFF6A11CB),
                                     ),
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
