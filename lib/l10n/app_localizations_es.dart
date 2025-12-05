@@ -152,4 +152,25 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get imageTooLarge =>
       'La imagen es demasiado grande. El máximo es 10MB.';
+
+  @override
+  String get downloadButton => 'Descargar';
+
+  @override
+  String get correctButton => 'Corregir Clasificación';
+
+  @override
+  String get correctClassification => 'Corregir Clasificación';
+
+  @override
+  String get cancelButton => 'Cancelar';
+
+  @override
+  String get confirmButton => 'Confirmar';
+
+  @override
+  String get classificationUpdated => '¡Clasificación actualizada con éxito!';
+
+  @override
+  String get downloadStarted => 'Descarga iniciada...';
 }

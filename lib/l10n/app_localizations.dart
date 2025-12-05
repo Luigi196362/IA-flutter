@@ -361,6 +361,48 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'La imagen es demasiado grande. El máximo es 10MB.'**
   String get imageTooLarge;
+
+  /// No description provided for @downloadButton.
+  ///
+  /// In es, this message translates to:
+  /// **'Descargar'**
+  String get downloadButton;
+
+  /// No description provided for @correctButton.
+  ///
+  /// In es, this message translates to:
+  /// **'Corregir Clasificación'**
+  String get correctButton;
+
+  /// No description provided for @correctClassification.
+  ///
+  /// In es, this message translates to:
+  /// **'Corregir Clasificación'**
+  String get correctClassification;
+
+  /// No description provided for @cancelButton.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelar'**
+  String get cancelButton;
+
+  /// No description provided for @confirmButton.
+  ///
+  /// In es, this message translates to:
+  /// **'Confirmar'**
+  String get confirmButton;
+
+  /// No description provided for @classificationUpdated.
+  ///
+  /// In es, this message translates to:
+  /// **'¡Clasificación actualizada con éxito!'**
+  String get classificationUpdated;
+
+  /// No description provided for @downloadStarted.
+  ///
+  /// In es, this message translates to:
+  /// **'Descarga iniciada...'**
+  String get downloadStarted;
 }
 
 class _AppLocalizationsDelegate

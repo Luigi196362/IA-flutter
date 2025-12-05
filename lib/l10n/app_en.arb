@@ -42,5 +42,12 @@
   "uploadSuccess": "Image uploaded successfully!",
   "uploadFailed": "Upload failed: {error}",
   "uploadingLabel": "Uploading...",
-  "imageTooLarge": "Image is too large. Maximum is 10MB."
+  "imageTooLarge": "Image is too large. Maximum is 10MB.",
+  "downloadButton": "Download",
+  "correctButton": "Correct Classification",
+  "correctClassification": "Correct Classification",
+  "cancelButton": "Cancel",
+  "confirmButton": "Confirm",
+  "classificationUpdated": "Classification updated successfully!",
+  "downloadStarted": "Download started..."
 }

@@ -42,5 +42,12 @@
   "uploadSuccess": "¡Imagen subida con éxito!",
   "uploadFailed": "Fallo la subida: {error}",
   "uploadingLabel": "Subiendo...",
-  "imageTooLarge": "La imagen es demasiado grande. El máximo es 10MB."
+  "imageTooLarge": "La imagen es demasiado grande. El máximo es 10MB.",
+  "downloadButton": "Descargar",
+  "correctButton": "Corregir Clasificación",
+  "correctClassification": "Corregir Clasificación",
+  "cancelButton": "Cancelar",
+  "confirmButton": "Confirmar",
+  "classificationUpdated": "¡Clasificación actualizada con éxito!",
+  "downloadStarted": "Descarga iniciada..."
 }

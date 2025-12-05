@@ -1,35 +1,10 @@
 import 'dart:convert';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../l10n/app_localizations.dart';
 import '../config/api_config.dart';
-
-class ImageItem {
-  final int id;
-  final String name;
-  final String classification;
-  final String contentType;
-  final Uint8List data;
-
-  ImageItem({
-    required this.id,
-    required this.name,
-    required this.classification,
-    required this.contentType,
-    required this.data,
-  });
-
-  factory ImageItem.fromJson(Map<String, dynamic> json) {
-    return ImageItem(
-      id: json['id'],
-      name: json['name'],
-      classification: json['classification'],
-      contentType: json['contentType'],
-      data: base64Decode(json['data']),
-    );
-  }
-}
+import '../screens/image_detail_screen.dart';
+import '../models/image_item.dart';
 
 class GalleryView extends StatefulWidget {
   final String username;
@@ -225,44 +200,58 @@ class _GalleryViewState extends State<GalleryView> {
                           borderRadius: BorderRadius.circular(16),
                         ),
                         clipBehavior: Clip.antiAlias,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Expanded(
-                              child: Image.memory(
-                                image.data,
-                                fit: BoxFit.cover,
-                                errorBuilder: (context, error, stackTrace) {
-                                  return Container(
-                                    color: Colors.grey[300],
-                                    child: const Icon(
-                                      Icons.broken_image,
-                                      color: Colors.grey,
-                                    ),
-                                  );
-                                },
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    ImageDetailScreen(image: image),
                               ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.all(8.0),
-                              color: Colors.white,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    image.classification,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                      color: Color(0xFF6A11CB),
-                                    ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
+                            );
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Expanded(
+                                child: Hero(
+                                  tag: 'image_${image.id}',
+                                  child: Image.memory(
+                                    image.data,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (context, error, stackTrace) {
+                                      return Container(
+                                        color: Colors.grey[300],
+                                        child: const Icon(
+                                          Icons.broken_image,
+                                          color: Colors.grey,
+                                        ),
+                                      );
+                                    },
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ],
+                              Container(
+                                padding: const EdgeInsets.all(8.0),
+                                color: Colors.white,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      image.classification,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                        color: Color(0xFF6A11CB),
+                                      ),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     },
