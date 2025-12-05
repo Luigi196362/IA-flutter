@@ -28,6 +28,7 @@ class _GalleryViewState extends State<GalleryView> {
     'Animals',
     'Cars',
     'Food',
+    'Motorcycles',
     'Plants',
     'Clothes',
   ];
@@ -91,6 +92,8 @@ class _GalleryViewState extends State<GalleryView> {
         return AppLocalizations.of(context)!.categoryCars;
       case 'Food':
         return AppLocalizations.of(context)!.categoryFood;
+      case 'Motorcycles':
+        return AppLocalizations.of(context)!.categoryMotorcycles;
       case 'Plants':
         return AppLocalizations.of(context)!.categoryPlants;
       case 'Clothes':
@@ -270,6 +273,8 @@ class _GalleryViewState extends State<GalleryView> {
         return 'Autos';
       case 'Food':
         return 'Comida';
+      case 'Motorcycles':
+        return 'Motos';
       case 'Plants':
         return 'Plantas';
       case 'Clothes':

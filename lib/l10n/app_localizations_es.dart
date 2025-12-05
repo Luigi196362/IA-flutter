@@ -133,6 +133,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get categoryClothes => 'Ropa';
 
   @override
+  String get categoryMotorcycles => 'Motos';
+
+  @override
   String get sendLabel => 'Enviar';
 
   @override

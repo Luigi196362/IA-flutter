@@ -326,6 +326,12 @@ abstract class AppLocalizations {
   /// **'Ropa'**
   String get categoryClothes;
 
+  /// No description provided for @categoryMotorcycles.
+  ///
+  /// In es, this message translates to:
+  /// **'Motos'**
+  String get categoryMotorcycles;
+
   /// No description provided for @sendLabel.
   ///
   /// In es, this message translates to:

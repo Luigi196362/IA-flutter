@@ -3,6 +3,8 @@ import '../models/image_item.dart';
 import '../l10n/app_localizations.dart';
 import '../utils/file_saver.dart';
 import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
+import '../config/api_config.dart';
 
 class ImageDetailScreen extends StatefulWidget {
   final ImageItem image;
@@ -18,6 +20,7 @@ class _ImageDetailScreenState extends State<ImageDetailScreen> {
     'Animals',
     'Cars',
     'Food',
+    'Motorcycles',
     'Plants',
     'Clothes',
   ];
@@ -30,12 +33,73 @@ class _ImageDetailScreenState extends State<ImageDetailScreen> {
         return AppLocalizations.of(context)!.categoryCars;
       case 'Food':
         return AppLocalizations.of(context)!.categoryFood;
+      case 'Motorcycles':
+        return AppLocalizations.of(context)!.categoryMotorcycles;
       case 'Plants':
         return AppLocalizations.of(context)!.categoryPlants;
       case 'Clothes':
         return AppLocalizations.of(context)!.categoryClothes;
       default:
         return category;
+    }
+  }
+
+  int _mapCategoryToInt(String category) {
+    switch (category) {
+      case 'Animals':
+        return 0;
+      case 'Cars':
+        return 1;
+      case 'Food':
+        return 2;
+      case 'Motorcycles':
+        return 3;
+      case 'Plants':
+        return 4;
+      case 'Clothes':
+        return 5;
+      default:
+        return 0;
+    }
+  }
+
+  Future<void> _updateClassification(String category) async {
+    final int classId = _mapCategoryToInt(category);
+    final uri = Uri.parse(
+      '${ApiConfig.baseUrl}/api/images/${widget.image.id}/classification',
+    ).replace(queryParameters: {'classification': classId.toString()});
+
+    try {
+      final response = await http.put(uri);
+
+      if (mounted) {
+        if (response.statusCode == 200) {
+          Navigator.pop(context); // Close dialog
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                AppLocalizations.of(context)!.classificationUpdated,
+              ),
+              backgroundColor: Colors.green,
+            ),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'Error updating classification: ${response.statusCode}',
+              ),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
+        );
+      }
     }
   }
 
@@ -73,17 +137,7 @@ class _ImageDetailScreenState extends State<ImageDetailScreen> {
                   child: Text(AppLocalizations.of(context)!.cancelButton),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          AppLocalizations.of(context)!.classificationUpdated,
-                        ),
-                        backgroundColor: Colors.green,
-                      ),
-                    );
-                  },
+                  onPressed: () => _updateClassification(tempSelectedCategory),
                   child: Text(AppLocalizations.of(context)!.confirmButton),
                 ),
               ],
