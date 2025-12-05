@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import '../l10n/app_localizations.dart';
 import '../config/api_config.dart';
+import 'package:intl/intl.dart';
 
 class AddView extends StatefulWidget {
   final VoidCallback? onUploadSuccess;
@@ -151,11 +152,17 @@ class _AddViewState extends State<AddView> {
       final bytes = await _selectedImage!.readAsBytes();
 
       String filename = _selectedImage!.name;
-      // Ensure filename has an extension for camera uploads if missing
-      if (!filename.toLowerCase().endsWith('.jpg') &&
-          !filename.toLowerCase().endsWith('.jpeg') &&
-          !filename.toLowerCase().endsWith('.png')) {
-        filename = '$filename.jpg';
+
+      if (_isCameraMode) {
+        final timestamp = DateFormat('yyyyMMdd_HHmmss').format(DateTime.now());
+        filename = 'foto_$timestamp.jpg';
+      } else {
+        // Ensure filename has an extension for file uploads if missing
+        if (!filename.toLowerCase().endsWith('.jpg') &&
+            !filename.toLowerCase().endsWith('.jpeg') &&
+            !filename.toLowerCase().endsWith('.png')) {
+          filename = '$filename.jpg';
+        }
       }
 
       final multipartFile = http.MultipartFile.fromBytes(

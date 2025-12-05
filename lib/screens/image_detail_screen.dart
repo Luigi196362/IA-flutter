@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/image_item.dart';
 import '../l10n/app_localizations.dart';
 import '../utils/file_saver.dart';
+import 'package:intl/intl.dart';
 
 class ImageDetailScreen extends StatefulWidget {
   final ImageItem image;
@@ -102,7 +103,15 @@ class _ImageDetailScreenState extends State<ImageDetailScreen> {
         ),
       );
 
-      await FileSaver.saveFile(widget.image.name, widget.image.data);
+      String filename = widget.image.name;
+      if (filename.isEmpty ||
+          filename.startsWith('.') ||
+          !filename.contains('.')) {
+        final timestamp = DateFormat('yyyyMMdd_HHmmss').format(DateTime.now());
+        filename = 'foto_$timestamp.jpg';
+      }
+
+      await FileSaver.saveFile(filename, widget.image.data);
 
       if (mounted) {
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
