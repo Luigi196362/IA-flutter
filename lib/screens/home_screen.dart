@@ -20,8 +20,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> _widgetOptions = <Widget>[
-      const GalleryView(),
+      GalleryView(username: widget.username),
       AddView(
+        username: widget.username,
         onUploadSuccess: () {
           setState(() {
             _selectedIndex = 0;

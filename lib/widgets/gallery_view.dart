@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../l10n/app_localizations.dart';
+import '../config/api_config.dart';
 
 class ImageItem {
   final int id;
@@ -31,7 +32,9 @@ class ImageItem {
 }
 
 class GalleryView extends StatefulWidget {
-  const GalleryView({super.key});
+  final String username;
+
+  const GalleryView({super.key, required this.username});
 
   @override
   State<GalleryView> createState() => _GalleryViewState();
@@ -67,9 +70,11 @@ class _GalleryViewState extends State<GalleryView> {
     });
 
     try {
-      final response = await http.get(
-        Uri.parse('http://localhost:8080/api/images'),
-      );
+      final uri = Uri.parse(
+        '${ApiConfig.baseUrl}/api/images',
+      ).replace(queryParameters: {'username': widget.username});
+
+      final response = await http.get(uri);
 
       if (response.statusCode == 200) {
         final List<dynamic> jsonList = jsonDecode(response.body);

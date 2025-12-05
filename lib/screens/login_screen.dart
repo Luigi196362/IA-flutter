@@ -6,6 +6,8 @@ import '../main.dart';
 import 'register_screen.dart';
 import 'home_screen.dart';
 
+import '../config/api_config.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -50,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen>
       _isLoading = true;
     });
 
-    final url = Uri.parse('http://localhost:8080/api/login');
+    final url = Uri.parse('${ApiConfig.baseUrl}/api/login');
     try {
       final response = await http.post(
         url,

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../l10n/app_localizations.dart';
 
+import '../config/api_config.dart';
+
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -47,7 +49,7 @@ class _RegisterScreenState extends State<RegisterScreen>
       _isLoading = true;
     });
 
-    final url = Uri.parse('http://localhost:8080/api/register');
+    final url = Uri.parse('${ApiConfig.baseUrl}/api/register');
     try {
       final response = await http.post(
         url,

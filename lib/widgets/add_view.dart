@@ -5,11 +5,13 @@ import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import '../l10n/app_localizations.dart';
+import '../config/api_config.dart';
 
 class AddView extends StatefulWidget {
   final VoidCallback? onUploadSuccess;
+  final String username;
 
-  const AddView({super.key, this.onUploadSuccess});
+  const AddView({super.key, this.onUploadSuccess, required this.username});
 
   @override
   State<AddView> createState() => _AddViewState();
@@ -141,8 +143,9 @@ class _AddViewState extends State<AddView> {
     );
 
     try {
-      final uri = Uri.parse('http://localhost:8080/api/images');
+      final uri = Uri.parse('${ApiConfig.baseUrl}/api/images');
       final request = http.MultipartRequest('POST', uri);
+      request.fields['username'] = widget.username;
 
       // Read file bytes to support both Web and Mobile
       final bytes = await _selectedImage!.readAsBytes();
