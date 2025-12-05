@@ -50,5 +50,10 @@
   "cancelButton": "Cancelar",
   "confirmButton": "Confirmar",
   "classificationUpdated": "¡Clasificación actualizada con éxito!",
-  "downloadStarted": "Descarga iniciada..."
+  "downloadStarted": "Descarga iniciada...",
+  "deleteButton": "Eliminar",
+  "deleteConfirmTitle": "Eliminar Imagen",
+  "deleteConfirmContent": "¿Estás seguro de que deseas eliminar esta imagen?",
+  "deleteSuccess": "Imagen eliminada con éxito",
+  "deleteFailed": "Fallo al eliminar la imagen: {error}"
 }

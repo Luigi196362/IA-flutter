@@ -175,4 +175,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get downloadStarted => 'Download started...';
+
+  @override
+  String get deleteButton => 'Delete';
+
+  @override
+  String get deleteConfirmTitle => 'Delete Image';
+
+  @override
+  String get deleteConfirmContent =>
+      'Are you sure you want to delete this image?';
+
+  @override
+  String get deleteSuccess => 'Image deleted successfully';
+
+  @override
+  String deleteFailed(Object error) {
+    return 'Failed to delete image: $error';
+  }
 }

@@ -176,4 +176,22 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get downloadStarted => 'Descarga iniciada...';
+
+  @override
+  String get deleteButton => 'Eliminar';
+
+  @override
+  String get deleteConfirmTitle => 'Eliminar Imagen';
+
+  @override
+  String get deleteConfirmContent =>
+      '¿Estás seguro de que deseas eliminar esta imagen?';
+
+  @override
+  String get deleteSuccess => 'Imagen eliminada con éxito';
+
+  @override
+  String deleteFailed(Object error) {
+    return 'Fallo al eliminar la imagen: $error';
+  }
 }

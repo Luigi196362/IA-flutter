@@ -208,8 +208,16 @@ class _GalleryViewState extends State<GalleryView> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    ImageDetailScreen(image: image),
+                                builder: (context) => ImageDetailScreen(
+                                  image: image,
+                                  onDelete: () {
+                                    setState(() {
+                                      _images.removeWhere(
+                                        (item) => item.id == image.id,
+                                      );
+                                    });
+                                  },
+                                ),
                               ),
                             );
                           },

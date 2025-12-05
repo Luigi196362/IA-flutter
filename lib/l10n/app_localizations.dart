@@ -409,6 +409,36 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Descarga iniciada...'**
   String get downloadStarted;
+
+  /// No description provided for @deleteButton.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminar'**
+  String get deleteButton;
+
+  /// No description provided for @deleteConfirmTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminar Imagen'**
+  String get deleteConfirmTitle;
+
+  /// No description provided for @deleteConfirmContent.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Estás seguro de que deseas eliminar esta imagen?'**
+  String get deleteConfirmContent;
+
+  /// No description provided for @deleteSuccess.
+  ///
+  /// In es, this message translates to:
+  /// **'Imagen eliminada con éxito'**
+  String get deleteSuccess;
+
+  /// No description provided for @deleteFailed.
+  ///
+  /// In es, this message translates to:
+  /// **'Fallo al eliminar la imagen: {error}'**
+  String deleteFailed(Object error);
 }
 
 class _AppLocalizationsDelegate

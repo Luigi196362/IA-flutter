@@ -8,8 +8,9 @@ import '../config/api_config.dart';
 
 class ImageDetailScreen extends StatefulWidget {
   final ImageItem image;
+  final VoidCallback? onDelete;
 
-  const ImageDetailScreen({super.key, required this.image});
+  const ImageDetailScreen({super.key, required this.image, this.onDelete});
 
   @override
   State<ImageDetailScreen> createState() => _ImageDetailScreenState();
@@ -148,6 +149,78 @@ class _ImageDetailScreenState extends State<ImageDetailScreen> {
     );
   }
 
+  Future<void> _deleteImage() async {
+    final uri = Uri.parse('${ApiConfig.baseUrl}/api/images/${widget.image.id}');
+
+    try {
+      final response = await http.delete(uri);
+
+      if (mounted) {
+        if (response.statusCode == 200) {
+          widget.onDelete?.call();
+          Navigator.pop(context); // Return to gallery
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(AppLocalizations.of(context)!.deleteSuccess),
+              backgroundColor: Colors.green,
+            ),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                AppLocalizations.of(
+                  context,
+                )!.deleteFailed(response.statusCode.toString()),
+              ),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              AppLocalizations.of(context)!.deleteFailed(e.toString()),
+            ),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  void _showDeleteConfirmationDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context)!.deleteConfirmTitle),
+          content: Text(AppLocalizations.of(context)!.deleteConfirmContent),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(AppLocalizations.of(context)!.cancelButton),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context); // Close dialog
+                _deleteImage();
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+              child: Text(
+                AppLocalizations.of(context)!.confirmButton,
+                style: const TextStyle(color: Colors.white),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Future<void> _downloadImage() async {
     try {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -236,6 +309,15 @@ class _ImageDetailScreenState extends State<ImageDetailScreen> {
                 label: Text(AppLocalizations.of(context)!.correctButton),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.primary,
+                  foregroundColor: Colors.white,
+                ),
+              ),
+              ElevatedButton.icon(
+                onPressed: _showDeleteConfirmationDialog,
+                icon: const Icon(Icons.delete),
+                label: Text(AppLocalizations.of(context)!.deleteButton),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
                   foregroundColor: Colors.white,
                 ),
               ),
