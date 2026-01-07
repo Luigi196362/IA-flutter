@@ -57,5 +57,8 @@
   "deleteSuccess": "Imagen eliminada con éxito",
   "deleteFailed": "Fallo al eliminar la imagen: {error}",
   "aboutTitle": "Acerca de",
-  "aboutDescription": "Esta aplicación es una galería inteligente que, haciendo uso de IA, puede clasificar imágenes y almacenarlas en una base de datos para su futura consulta."
+  "aboutDescription": "Esta aplicación es una galería inteligente que, haciendo uso de IA, puede clasificar imágenes y almacenarlas en una base de datos para su futura consulta.",
+  "activityLogTitle": "Registros de Actividad",
+  "noLogsFound": "No se encontraron registros.",
+  "errorLoadingLogs": "Error al cargar los registros: {error}"
 }

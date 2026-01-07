@@ -201,4 +201,15 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get aboutDescription =>
       'Esta aplicación es una galería inteligente que, haciendo uso de IA, puede clasificar imágenes y almacenarlas en una base de datos para su futura consulta.';
+
+  @override
+  String get activityLogTitle => 'Registros de Actividad';
+
+  @override
+  String get noLogsFound => 'No se encontraron registros.';
+
+  @override
+  String errorLoadingLogs(Object error) {
+    return 'Error al cargar los registros: $error';
+  }
 }

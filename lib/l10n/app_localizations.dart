@@ -451,6 +451,24 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Esta aplicación es una galería inteligente que, haciendo uso de IA, puede clasificar imágenes y almacenarlas en una base de datos para su futura consulta.'**
   String get aboutDescription;
+
+  /// No description provided for @activityLogTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Registros de Actividad'**
+  String get activityLogTitle;
+
+  /// No description provided for @noLogsFound.
+  ///
+  /// In es, this message translates to:
+  /// **'No se encontraron registros.'**
+  String get noLogsFound;
+
+  /// No description provided for @errorLoadingLogs.
+  ///
+  /// In es, this message translates to:
+  /// **'Error al cargar los registros: {error}'**
+  String errorLoadingLogs(Object error);
 }
 
 class _AppLocalizationsDelegate

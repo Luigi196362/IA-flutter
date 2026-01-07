@@ -200,4 +200,15 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get aboutDescription =>
       'This app is a smart gallery that uses AI to classify images and stores them in a database for future reference.';
+
+  @override
+  String get activityLogTitle => 'Activity Logs';
+
+  @override
+  String get noLogsFound => 'No logs found.';
+
+  @override
+  String errorLoadingLogs(Object error) {
+    return 'Error loading logs: $error';
+  }
 }

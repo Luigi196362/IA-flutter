@@ -57,5 +57,8 @@
   "deleteSuccess": "Image deleted successfully",
   "deleteFailed": "Failed to delete image: {error}",
   "aboutTitle": "About",
-  "aboutDescription": "This app is a smart gallery that uses AI to classify images and stores them in a database for future reference."
+  "aboutDescription": "This app is a smart gallery that uses AI to classify images and stores them in a database for future reference.",
+  "activityLogTitle": "Activity Logs",
+  "noLogsFound": "No logs found.",
+  "errorLoadingLogs": "Error loading logs: {error}"
 }
