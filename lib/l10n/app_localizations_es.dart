@@ -194,4 +194,11 @@ class AppLocalizationsEs extends AppLocalizations {
   String deleteFailed(Object error) {
     return 'Fallo al eliminar la imagen: $error';
   }
+
+  @override
+  String get aboutTitle => 'Acerca de';
+
+  @override
+  String get aboutDescription =>
+      'Esta aplicación es una galería inteligente que, haciendo uso de IA, puede clasificar imágenes y almacenarlas en una base de datos para su futura consulta.';
 }

@@ -439,6 +439,18 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Fallo al eliminar la imagen: {error}'**
   String deleteFailed(Object error);
+
+  /// No description provided for @aboutTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Acerca de'**
+  String get aboutTitle;
+
+  /// No description provided for @aboutDescription.
+  ///
+  /// In es, this message translates to:
+  /// **'Esta aplicación es una galería inteligente que, haciendo uso de IA, puede clasificar imágenes y almacenarlas en una base de datos para su futura consulta.'**
+  String get aboutDescription;
 }
 
 class _AppLocalizationsDelegate

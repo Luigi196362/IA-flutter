@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import 'settings_screen.dart';
 import 'login_screen.dart';
+import 'about_screen.dart';
 import '../widgets/gallery_view.dart';
 import '../widgets/add_view.dart';
 
@@ -127,6 +128,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     end: Alignment.bottomRight,
                   ),
                 ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.info, color: Color(0xFF6A11CB)),
+                title: Text(
+                  AppLocalizations.of(context)!.aboutTitle,
+                  style: const TextStyle(
+                    color: Color(0xFF6A11CB),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AboutScreen(),
+                    ),
+                  );
+                },
               ),
               ListTile(
                 leading: const Icon(Icons.logout, color: Colors.red),

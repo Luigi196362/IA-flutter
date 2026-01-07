@@ -193,4 +193,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String deleteFailed(Object error) {
     return 'Failed to delete image: $error';
   }
+
+  @override
+  String get aboutTitle => 'About';
+
+  @override
+  String get aboutDescription =>
+      'This app is a smart gallery that uses AI to classify images and stores them in a database for future reference.';
 }
