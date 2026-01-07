@@ -291,37 +291,88 @@ class _ImageDetailScreenState extends State<ImageDetailScreen> {
         color: Colors.black.withOpacity(0.8),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton.icon(
-                onPressed: _downloadImage,
-                icon: const Icon(Icons.download),
-                label: Text(AppLocalizations.of(context)!.downloadButton),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.black,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            reverse:
+                true, // To make them appear "de derecha a izquierda" as requested? Or just standard?
+            // The user said "vuelvan a aparecer de derecha a izquierda".
+            // If they mean the previous state (Row) was "right to left", that's odd because it was MainAxisAlignment.spaceEvenly.
+            // Maybe they mean "horizontalmente" (from left to right, implied).
+            // However, "reverse: true" on a horizontal scroll view starts from the end (right).
+            // Let's try standard Row first but maybe with `MainAxisAlignment.end` if it wasn't scrolling.
+            // But for scrolling, `reverse: true` makes it start at the right? No, standard is left.
+            // Let's stick to standard Left-to-Right scrolling Row, but maybe the user meant they want the buttons aligned to the right?
+            // "Eliminar" was the one overflowing on the right.
+            // Let's just make it a scrolling Row.
+            // Wait, "vuelvan a aparecer de derecha a izquierda" -> "appear again from right to left".
+            // Maybe they want the order reversed?
+            // "Download", "Correct", "Delete".
+            // Previous code: Download (Left), Correct (Middle), Delete (Right).
+            // "Eliminar se sale de la pantalla del lado derecho" -> Delete went off screen right.
+            // "Ahora se salen por la parte de abajo" -> Wrap made them stack down.
+            // "Quiero que vuelvan a aparecer de derecha a izquierda" -> Maybe "Izquierda a Derecha"? (Left to Right).
+            // Just standard horizontal flow. I will assume they misspoke or meant "Horizontal".
+            // I will use SingleChildScrollView with horizontal axis.
+            child: Row(
+              children: [
+                ElevatedButton.icon(
+                  onPressed: _downloadImage,
+                  icon: const Icon(Icons.download, size: 18),
+                  label: Text(
+                    AppLocalizations.of(context)!.downloadButton,
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
                 ),
-              ),
-              ElevatedButton.icon(
-                onPressed: _showCorrectionDialog,
-                icon: const Icon(Icons.edit),
-                label: Text(AppLocalizations.of(context)!.correctButton),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).colorScheme.primary,
-                  foregroundColor: Colors.white,
+                const SizedBox(width: 8),
+                ElevatedButton.icon(
+                  onPressed: _showCorrectionDialog,
+                  icon: const Icon(Icons.edit, size: 18),
+                  label: Text(
+                    AppLocalizations.of(context)!.correctButton,
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
                 ),
-              ),
-              ElevatedButton.icon(
-                onPressed: _showDeleteConfirmationDialog,
-                icon: const Icon(Icons.delete),
-                label: Text(AppLocalizations.of(context)!.deleteButton),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  foregroundColor: Colors.white,
+                const SizedBox(width: 8),
+                ElevatedButton.icon(
+                  onPressed: _showDeleteConfirmationDialog,
+                  icon: const Icon(Icons.delete, size: 18),
+                  label: Text(
+                    AppLocalizations.of(context)!.deleteButton,
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
