@@ -469,6 +469,18 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Error al cargar los registros: {error}'**
   String errorLoadingLogs(Object error);
+
+  /// No description provided for @serverConnectionError.
+  ///
+  /// In es, this message translates to:
+  /// **'El servidor no responde, por favor intente más tarde.'**
+  String get serverConnectionError;
+
+  /// No description provided for @connectionTimeout.
+  ///
+  /// In es, this message translates to:
+  /// **'La conexión ha expirado, por favor verifique su internet.'**
+  String get connectionTimeout;
 }
 
 class _AppLocalizationsDelegate

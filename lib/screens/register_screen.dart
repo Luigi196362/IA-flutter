@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import '../l10n/app_localizations.dart';
 
 import '../config/api_config.dart';
+import '../utils/api_error_handler.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -88,7 +89,7 @@ class _RegisterScreenState extends State<RegisterScreen>
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            AppLocalizations.of(context)!.errorOccurred(e.toString()),
+            ApiErrorHandler.getErrorMessage(e, AppLocalizations.of(context)!),
           ),
           backgroundColor: Colors.red,
         ),

@@ -212,4 +212,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String errorLoadingLogs(Object error) {
     return 'Error al cargar los registros: $error';
   }
+
+  @override
+  String get serverConnectionError =>
+      'El servidor no responde, por favor intente más tarde.';
+
+  @override
+  String get connectionTimeout =>
+      'La conexión ha expirado, por favor verifique su internet.';
 }

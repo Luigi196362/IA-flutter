@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import '../l10n/app_localizations.dart';
 import '../config/api_config.dart';
+import '../utils/api_error_handler.dart';
 import 'package:intl/intl.dart';
 
 class AddView extends StatefulWidget {
@@ -203,7 +204,7 @@ class _AddViewState extends State<AddView> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              AppLocalizations.of(context)!.uploadFailed(e.toString()),
+              ApiErrorHandler.getErrorMessage(e, AppLocalizations.of(context)!),
             ),
             backgroundColor: Colors.red,
           ),

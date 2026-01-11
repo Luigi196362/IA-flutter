@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../l10n/app_localizations.dart';
 import '../config/api_config.dart';
+import '../utils/api_error_handler.dart';
 import '../screens/image_detail_screen.dart';
 import '../models/image_item.dart';
 
@@ -66,7 +67,10 @@ class _GalleryViewState extends State<GalleryView> {
       }
     } catch (e) {
       setState(() {
-        _errorMessage = 'Error loading images: $e';
+        _errorMessage = ApiErrorHandler.getErrorMessage(
+          e,
+          AppLocalizations.of(context)!,
+        );
         _isLoading = false;
       });
     }

@@ -7,6 +7,7 @@ import 'register_screen.dart';
 import 'home_screen.dart';
 
 import '../config/api_config.dart';
+import '../utils/api_error_handler.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -91,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen>
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            AppLocalizations.of(context)!.errorOccurred(e.toString()),
+            ApiErrorHandler.getErrorMessage(e, AppLocalizations.of(context)!),
           ),
           backgroundColor: Colors.red,
         ),

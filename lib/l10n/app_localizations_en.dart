@@ -211,4 +211,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String errorLoadingLogs(Object error) {
     return 'Error loading logs: $error';
   }
+
+  @override
+  String get serverConnectionError =>
+      'Server not responding, please try again later.';
+
+  @override
+  String get connectionTimeout =>
+      'Connection timed out, please check your internet.';
 }
